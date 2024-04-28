@@ -3,6 +3,13 @@ import { createPinia } from "pinia"
 import { createRouter, createWebHashHistory } from 'vue-router'
 import './style.css'
 import App from './App.vue'
+import { getCategory }from '@/apis/testAPI.js'
+//测试接口函数
+getCategory().then(res=>{
+  console.log(res)
+
+})
+
 
 const routes = [
   // 这里放置你的路由配置
