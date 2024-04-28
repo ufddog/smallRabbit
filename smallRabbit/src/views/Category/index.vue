@@ -1,14 +1,7 @@
 <script setup>
-
-
-
 </script>
 <template>
-<div>你好</div>
-
-
+    我是category
 </template>
 <style>
-
-
 </style>
