@@ -2,6 +2,8 @@
 import { onMounted } from 'vue';
 import{useCounterStore} from './store.js'
 import { storeToRefs } from 'pinia';
+import HelloWorld from '@/views/HelloWorld.vue';
+
 
 const counterStore=useCounterStore()
 
@@ -19,8 +21,9 @@ onMounted(()=>{
 </script>
 
 <template>
+  <hello-world></hello-world>
   <div>{{ counter }}</div>
-  <button @click="addCounter">加一</button>
+  <el-button type="primary" @click="addCounter">加一</el-button>
   <div>{{ doubleCount }}</div>
 
 <ul>
