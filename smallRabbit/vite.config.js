@@ -21,13 +21,13 @@ export default defineConfig({
     }
   },
 
-  //elementPlus 主题覆盖导入
+  //elementPlus 主题覆盖导入 自动导入
   css:{
   preprocessorOptions:{
-  scss:{
-  additionalData:
-  `@use "@/styles/element/index.scss" as *;
-  `,
+     scss:{
+        additionalData:
+          `@use "@/styles/element/index.scss" as *;
+          @use "@/styles/var.scss" as *;`
   }
 
   }

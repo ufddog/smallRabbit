@@ -4,8 +4,14 @@
 </script>
 <template>
   <router-view></router-view>
-
+<div class="test">
+  test scss
+</div>
 
 </template>
-<style>
+<style scoped lang="scss">
+.test{
+ color : $priceColor
+  
+}
 </style>
