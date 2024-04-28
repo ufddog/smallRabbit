@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import router from '@/router/index.js'
-import './style.css'
+import './styles/common.scss'
 import App from './App.vue'
 import { getCategory }from '@/apis/testAPI.js'
 //测试接口函数
