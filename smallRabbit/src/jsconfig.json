@@ -1,15 +1,15 @@
-{
-"compilerOptions":{
-  "baseUrl":"./",
-  "paths":{
-    "@/*":[
-        "sec/*"
-    ]
-  }
+// {
+// "compilerOptions":{
+//   "baseUrl":"./",
+//   "paths":{
+//     "@/*":[
+//         "sec/*"
+//     ]
+//   }
 
-}
-
-
+// }
 
 
-}
+
+
+// }
