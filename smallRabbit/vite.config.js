@@ -12,7 +12,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver({importStyle:"sass"})],//配置elementPlus采用sass样式配色系统（统一主题色）
+      resolvers: [ElementPlusResolver({importStyle:"sass"})],//配置elementPlus采用sass样式配色系统
     }),
   ],
   resolve: {

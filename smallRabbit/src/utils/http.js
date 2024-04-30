@@ -6,6 +6,7 @@ const httpInstance =axios.create({
  timeout:5000,
 
 })
+
 //拦截器
 httpInstance.interceptors.request.use(config=>{ 
     return config
