@@ -18,3 +18,10 @@ export const findNewAPI = () => {
       url:'/home/new'
     })
   }
+
+  export const findHotAPI = () => {
+    return httpInstance({
+      url:'home/hot'
+    })
+  }
+  
