@@ -14,6 +14,7 @@ return { categoryList,getCategory}
 
 })
 
+
 export const useCounterStore=defineStore('counter',()=>{
   
 const counter=ref(0)
