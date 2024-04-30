@@ -5,11 +5,12 @@ export const imgLazy={
 install(app){
     app.directive('img-lazy',{
         mounted(el,binding){
-           useIntersectionObserver(
+          const{stop}= useIntersectionObserver(
             el,
             ([{ isIntersecting }]) => {
              if(isIntersecting ){
               el.src=binding.value
+              stop()
              }
             },
           )
