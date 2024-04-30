@@ -1,47 +1,21 @@
 <script setup>
+import { ref ,onMounted} from 'vue';
 import { useScroll } from '@vueuse/core'
 const {y}=useScroll(window)
 
+import { useCategoryStore } from '../../../store';
+
+const useCategory=useCategoryStore()
 </script>
 
 <template>
-  <div class="app-header-sticky" :class="{show :y>180}" >
+  <div class="app-header-sticky" :class="{show :y>120}" ><!-- 当页面滚动y值大于180时 show类显示 即吸顶导航出现 -->
     <div class="container">
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
-      <ul class="app-header-nav ">
-        <li class="home">
-          <RouterLink to="/">首页</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">居家</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">美食</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">服饰</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">母婴</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">个护</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">严选</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">数码</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">运动</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">杂项</RouterLink>
-        </li>
+      <ul class="app-header-nav">
+        <li v-for="item in useCategory.categoryList" :key="item.id"><RouterLink to="/">{{ item.name }}</RouterLink></li>
       </ul>
-
       <div class="right">
         <RouterLink to="/">品牌</RouterLink>
         <RouterLink to="/">专题</RouterLink>

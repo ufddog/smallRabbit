@@ -1,7 +1,18 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
-import axios from 'axios'
-const API_URL='http://geek.itheima.net/v1_0/channels'
+import { getCategoryApi } from "./apis/layoutAPI";
+
+export const useCategoryStore=defineStore('Category',()=>{
+
+const categoryList=ref([])
+const getCategory=async ()=>{
+  const res= await getCategoryApi()
+  console.log(res)
+  categoryList.value=res.result
+}
+return { categoryList,getCategory}
+
+})
 
 export const useCounterStore=defineStore('counter',()=>{
   

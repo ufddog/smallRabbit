@@ -1,17 +1,9 @@
 <script setup>
 import {onMounted, ref} from 'vue'
 //引入外部Api实现一级导航渲染
-import { getCategoryApi }from '@/apis/layoutAPI.js'
-const categoryList=ref([])
-const category=async ()=>{
-  const res= await getCategoryApi()
-  console.log(res)
-  categoryList.value=res.result
-}
+import { useCategoryStore } from '../../../store';
 
-onMounted(()=>{
-  category()
-})
+const useCategory=useCategoryStore()
 </script>
 
 <template>
@@ -21,7 +13,7 @@ onMounted(()=>{
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
       <ul class="app-header-nav">
-        <li v-for="item in categoryList" :key="item.id"><RouterLink to="/">{{ item.name }}</RouterLink></li>
+        <li v-for="item in useCategory.categoryList" :key="item.id"><RouterLink to="/">{{ item.name }}</RouterLink></li>
       </ul>
       <div class="search">
         <i class="iconfont icon-search"></i>
