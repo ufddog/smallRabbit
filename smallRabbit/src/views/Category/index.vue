@@ -1,8 +1,9 @@
 <script setup>
-import {onMounted, onUpdated, ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import {getCategoryApi} from '@/apis/category'
 import { useRoute } from 'vue-router';
 import {getBannerApi} from '@/apis/home.js'
+import GoodsItem from '../Home/components/GoodsItem.vue';
 const bannerList=ref([])
 const getBanner=async ()=>{
 
@@ -42,7 +43,26 @@ getBanner()})
       </el-carousel-item>
     </el-carousel>
   </div>
-
+  
+  <div class="sub-list">
+  <h3>全部分类</h3>
+  <ul>
+    <li v-for="i in categoryList.children" :key="i.id">
+      <RouterLink to="/">
+        <img :src="i.picture" />
+        <p>{{ i.name }}</p>
+      </RouterLink>
+    </li>
+  </ul>
+</div>
+<div class="ref-goods" v-for="item in categoryList.children" :key="item.id">
+  <div class="head">
+    <h3>- {{ item.name }}-</h3>
+  </div>
+  <div class="body">
+    <GoodsItem v-for="good in item.goods" :good="good" :key="good.id" />
+  </div>
+</div>
     </div>
   </div>
  
