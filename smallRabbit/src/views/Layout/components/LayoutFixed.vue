@@ -14,7 +14,8 @@ const useCategory=useCategoryStore()
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
       <ul class="app-header-nav">
-        <li v-for="item in useCategory.categoryList" :key="item.id"><RouterLink to="/">{{ item.name }}</RouterLink></li>
+        <li v-for="item in useCategory.categoryList" :key="item.id">
+          <RouterLink :to="`/category/${item.id}`">{{ item.name }}</RouterLink></li>
       </ul>
       <div class="right">
         <RouterLink to="/">品牌</RouterLink>

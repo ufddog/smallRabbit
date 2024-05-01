@@ -15,8 +15,9 @@ routes:[
      children:[
         {path:'',//为空 会在“/”渲染的时候也进行渲染
         component:Home},
-        {path:'category',
-        component:Category},]  
+        {path:'category/:id',
+        component:Category,
+     props:true},]  
 },  
     {path:'/login',component:Login},
 ]
