@@ -20,5 +20,8 @@ routes:[
 },  
     {path:'/login',component:Login},
 ]
+
+
+
 })
 export default router
