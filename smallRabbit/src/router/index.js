@@ -16,8 +16,7 @@ routes:[
         {path:'',//为空 会在“/”渲染的时候也进行渲染
         component:Home},
         {path:'category/:id',
-        component:Category,
-     props:true},]  
+        component:Category},]  
 },  
     {path:'/login',component:Login},
 ]
