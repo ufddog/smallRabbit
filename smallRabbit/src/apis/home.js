@@ -25,3 +25,8 @@ export const findNewAPI = () => {
     })
   }
   
+  export const getGoodsAPI = () => {
+    return httpInstance({
+      url: '/home/goods'
+    })
+  }
