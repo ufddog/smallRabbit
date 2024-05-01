@@ -1,5 +1,6 @@
 <script setup>
-import {onMounted, ref} from 'vue'
+import{ onBeforeRouteUpdate,} from 'vue-router'
+import { onMounted, ref} from 'vue'
 import {getCategoryApi} from '@/apis/category'
 import { useRoute } from 'vue-router';
 import {getBannerApi} from '@/apis/home.js'
@@ -14,8 +15,8 @@ const getBanner=async ()=>{
 }
 const route=useRoute()
 const categoryList=ref({})
-const getCategory= async ()=>{
-const res=await getCategoryApi(route.params.id)
+const getCategory= async (id=route.params.id)=>{
+const res=await getCategoryApi(id)
 console.log(res);
 categoryList.value=res.result
 }
@@ -23,6 +24,10 @@ categoryList.value=res.result
 onMounted(()=>{
 getCategory()
 getBanner()})
+
+onBeforeRouteUpdate((to)=>{
+  getCategory(to.params.id)
+})
 
 </script>
 

@@ -16,7 +16,9 @@ onMounted(()=>{
  <layout-fixed></layout-fixed>   
 <layout-nav></layout-nav>
 <layout-header></layout-header>
-<router-view></router-view> 
+<!-- <router-view  :key="$route.fullPath"></router-view> 
+    :key="$route.fullPath" 添加key 破坏复用机制 强制销毁重建 -->
+    <router-view></router-view>
 <layout-footer></layout-footer>
 
    
