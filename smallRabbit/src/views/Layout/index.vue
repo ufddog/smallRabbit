@@ -21,5 +21,10 @@ onMounted(()=>{
 
    
 </template>
-<style>
+<style lang="scss">
+a.hover,
+a.router-link-active{
+    color: $xtxColor;
+        border-bottom: 1px solid $xtxColor;
+}
 </style>
