@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { getDetailApi } from '../../apis/detail';
 import { useRoute } from 'vue-router';
+import HotGoodsLog from './components/HotGoodsLog.vue'
 const route=useRoute()
 const goodsDetailList=ref({})
 const getDetail=async()=>{
@@ -125,7 +126,8 @@ getDetail()
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
-
+              <hot-goods-log></hot-goods-log>
+              <hot-goods-log></hot-goods-log>
             </div>
           </div>
         </div>
