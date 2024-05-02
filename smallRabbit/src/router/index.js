@@ -3,8 +3,8 @@ import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
-import subCategory from '@/views/subCategory/index.vue'
-
+import SubCategory from '@/views/SubCategory/index.vue'
+import GoodsDetail from '@/views/Detail/index.vue'
 
 const router=createRouter({
 
@@ -18,7 +18,12 @@ routes:[
         {path:'category/:id',
         component:Category},
        {path:'subCategory/:id',
-       component:subCategory,}]  
+       component:SubCategory,},
+       {path:'goodsDetail/:id',
+       component:GoodsDetail,},
+    
+    
+    ]  
 },  
     {path:'/login',component:Login},
 ],
