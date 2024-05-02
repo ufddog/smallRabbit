@@ -1,5 +1,4 @@
 <script setup>
-import {onMounted, ref} from 'vue'
 //引入外部Api实现一级导航渲染
 import { useCategoryStore } from '../../../store';
 

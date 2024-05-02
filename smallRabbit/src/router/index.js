@@ -17,9 +17,8 @@ routes:[
         component:Home},
         {path:'category/:id',
         component:Category},
-
        {path:'subCategory/:id',
-       component:subCategory}]  
+       component:subCategory,}]  
 },  
     {path:'/login',component:Login},
 ]

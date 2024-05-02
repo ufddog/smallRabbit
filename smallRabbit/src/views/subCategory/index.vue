@@ -1,7 +1,7 @@
 <script setup>
-import { onMounted,ref } from 'vue';
+import { onBeforeUpdate, onMounted,ref ,watch} from 'vue';
 import { getCategoryFilterAPI,getSubCategoryAPI } from '../../apis/category';
-import { useRoute} from 'vue-router';
+import { useRoute,onBeforeRouteUpdate} from 'vue-router';
 import GoodsItem from '../Home/components/GoodsItem.vue';
 const route=useRoute()
 const categoryData=ref({})
@@ -14,7 +14,7 @@ onMounted(()=>{
   getCategoryFilter()
 })
 
-const categoryList=ref({})
+const categoryList=ref([])
 const resData=ref({ 
      categoryId: route.params.id,
      page: 1,
@@ -22,14 +22,32 @@ const resData=ref({
      sortField: 'publishTime'
    } )
 const getSubCategory=async()=>{
-const res =await getSubCategoryAPI(resData)
-console.log(res);
-categoryList.value=res.result
+const res =await getSubCategoryAPI(resData.value)
+console.log('goods',res);
+categoryList.value=res.result.items
 
 }
 onMounted(()=>{
   getSubCategory()
 })
+
+const tabChange=()=>{
+  console.log(resData.value.sortField);
+  resData.value.page=1
+  disabled.value=false
+  getSubCategory();
+}
+
+const disabled=ref(false)
+const load= async ()=>{
+resData.value.page++
+const res =await getSubCategoryAPI(resData.value)
+if(res.result.items.length===0)
+{ disabled.value=true}
+else{
+categoryList.value=[...categoryList.value,...res.result.items] //展开运算符拼接
+}
+}
 </script>
 
 <template>
@@ -44,13 +62,13 @@ onMounted(()=>{
       </el-breadcrumb>
     </div>
     <div class="sub-container">
-      <el-tabs>
+      <el-tabs v-model="resData.sortField" @tab-change="tabChange">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
       </el-tabs>
-      <div class="body">
-        <GoodsItem v-for="good in categoryList.items" :good=good :key=good.id  />
+      <div class="body" v-infinite-scroll="load"  :infinite-scroll-disabled="disabled">
+        <GoodsItem v-for="good in categoryList" :good=good :key=good.id  />
       </div>
     </div>
   </div>
