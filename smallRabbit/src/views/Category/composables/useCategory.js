@@ -24,9 +24,5 @@ export  function useCategory(){
 
 return{
     categoryList,
-    
-
-
-
 }
 } 

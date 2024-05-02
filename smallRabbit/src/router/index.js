@@ -3,7 +3,7 @@ import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
- 
+import subCategory from '@/views/subCategory/index.vue'
 
 
 const router=createRouter({
@@ -16,7 +16,10 @@ routes:[
         {path:'',//为空 会在“/”渲染的时候也进行渲染
         component:Home},
         {path:'category/:id',
-        component:Category},]  
+        component:Category},
+
+       {path:'subCategory/:id',
+       component:subCategory}]  
 },  
     {path:'/login',component:Login},
 ]
