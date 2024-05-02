@@ -21,8 +21,13 @@ routes:[
        component:subCategory,}]  
 },  
     {path:'/login',component:Login},
-]
-
+],
+//路由切换回到顶部
+scrollBehavior(){
+    return {
+        top :0
+    }
+}
 
 
 })
