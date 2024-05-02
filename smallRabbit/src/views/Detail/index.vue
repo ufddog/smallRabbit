@@ -14,8 +14,8 @@ console.log(goodsDetailList.value.categories[0].name)
 
 onMounted(()=>{
 getDetail()
-
 })
+
 
 </script>
 
@@ -126,8 +126,8 @@ getDetail()
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
-              <hot-goods-log></hot-goods-log>
-              <hot-goods-log></hot-goods-log>
+              <hot-goods-log :hotType="1"></hot-goods-log>
+              <hot-goods-log :hotType="2"></hot-goods-log>
             </div>
           </div>
         </div>

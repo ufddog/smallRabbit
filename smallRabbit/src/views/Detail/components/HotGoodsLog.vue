@@ -1,11 +1,26 @@
 <script setup>
 import {fetchHotGoodsAPI} from '@/apis/detail.js'
-import { onMounted ,ref} from 'vue';
+import { computed, onMounted ,ref,defineProps} from 'vue';
 import { useRoute } from 'vue-router';
+
+const props=defineProps({
+hotType:{
+   type:Number
+}
+
+})
+
+const title=computed(()=>{
+  return props.hotType===1?'24小时热榜':'周热榜'
+
+})
+console.log('title',title);
+
+
 const route= useRoute()
 const hotData=ref({
  id:route.params.id,
- type:1,
+ type:props.hotType,
  Limit :3
 
 })
@@ -26,7 +41,7 @@ fetchHotGoods()
 
 <template>
   <div class="goods-hot">
-    <h3>周日榜单</h3>
+    <h3>{{ title }}</h3>
     <!-- 商品区块 -->
     <RouterLink to="/" class="goods-item" v-for="item in hotGoodsList" :key="item.id">
       <img :src="item.picture" alt="" />
