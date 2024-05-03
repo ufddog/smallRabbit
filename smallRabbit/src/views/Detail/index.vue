@@ -3,8 +3,6 @@ import { onMounted, ref } from 'vue';
 import { getDetailApi } from '../../apis/detail';
 import { useRoute } from 'vue-router';
 import HotGoodsLog from './components/HotGoodsLog.vue'
-import imgDetail from '../../composables/imgDetail/imgDetail.vue';
-import XtxSku from '@/composables/XtxSku/index.vue'
 const route=useRoute()
 const goodsDetailList=ref({})
 const getDetail=async()=>{
