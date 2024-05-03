@@ -4,6 +4,7 @@ import { getDetailApi } from '../../apis/detail';
 import { useRoute } from 'vue-router';
 import HotGoodsLog from './components/HotGoodsLog.vue'
 import imgDetail from '../../composables/imgDetail/imgDetail.vue';
+import XtxSku from '@/composables/XtxSku/index.vue'
 const route=useRoute()
 const goodsDetailList=ref({})
 const getDetail=async()=>{
@@ -16,7 +17,12 @@ console.log(goodsDetailList.value.categories[0].name)
 onMounted(()=>{
 getDetail()
 })
+const skuChange=(sku)=>{
+console.log('sku',sku);
 
+
+
+}
 
 </script>
 
@@ -44,7 +50,7 @@ getDetail()
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-                <img-detail></img-detail>
+                <img-detail :imageList="goodsDetailList.mainPictures"></img-detail>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
@@ -93,7 +99,7 @@ getDetail()
                 </dl>
               </div>
               <!-- sku组件 -->
-
+              <xtx-sku :goods="goodsDetailList" @change="skuChange"></xtx-sku>
               <!-- 数据组件 -->
 
               <!-- 按钮组件 -->

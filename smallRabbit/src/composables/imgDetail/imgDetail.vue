@@ -1,14 +1,15 @@
 <script setup>
-import {ref, watch} from 'vue'
+import {ref, watch,defineProps} from 'vue'
 import { useMouseInElement } from '@vueuse/core';
 // 图片列表
-const imageList = [
-  "https://yanxuan-item.nosdn.127.net/d917c92e663c5ed0bb577c7ded73e4ec.png",
-  "https://yanxuan-item.nosdn.127.net/e801b9572f0b0c02a52952b01adab967.jpg",
-  "https://yanxuan-item.nosdn.127.net/b52c447ad472d51adbdde1a83f550ac2.jpg",
-  "https://yanxuan-item.nosdn.127.net/f93243224dc37674dfca5874fe089c60.jpg",
-  "https://yanxuan-item.nosdn.127.net/f881cfe7de9a576aaeea6ee0d1d24823.jpg"
-]
+ defineProps({
+imageList:{
+  type:Array,
+  default:()=>{[]}
+}
+
+})
+
 const idexImg=ref(0)
 function mouseEnterImg(i){
 idexImg.value=i
@@ -51,7 +52,7 @@ if(elementY.value<=100){
   <div class="goods-image">
     <!-- 左侧大图-->
     <div class="middle" ref="target">
-      <img :src="imageList[idexImg]" alt="" />
+      <img :src="imageList?.[idexImg]" alt="" />
       <!-- 蒙层小滑块 -->
       <div class="layer" :style="{ left:`${left}px`, top:`${top}px` }" ></div>
     </div>
@@ -64,7 +65,7 @@ if(elementY.value<=100){
     <!-- 放大镜大图 -->
     <div class="large" :style="[
       {
-        backgroundImage: `url(${imageList[idexImg]})`,
+        backgroundImage: `url(${imageList?.[idexImg]})`,
         backgroundPositionX: `${-left*2}px`,
         backgroundPositionY: `${-top*2}px`,
       },
