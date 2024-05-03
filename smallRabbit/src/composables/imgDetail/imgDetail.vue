@@ -21,8 +21,8 @@ const { elementX, elementY, isOutside } = useMouseInElement(target)
 const left=ref(0)
 const top=ref(0)
 
-watch([elementX,elementY],()=>{
-
+watch([elementX,elementY,isOutside],()=>{
+if(!isOutside.value){
 if(elementX.value<300&&elementX.value>100){
   left.value=elementX.value-100
 }
@@ -41,13 +41,13 @@ if(elementY.value>=300){
 if(elementY.value<=100){
  top.value=0
 }
+}
 })
 
 </script>
 
 
 <template>
-  
   <div class="goods-image">
     <!-- 左侧大图-->
     <div class="middle" ref="target">
@@ -65,10 +65,10 @@ if(elementY.value<=100){
     <div class="large" :style="[
       {
         backgroundImage: `url(${imageList[idexImg]})`,
-        backgroundPositionX: `0px`,
-        backgroundPositionY: `0px`,
+        backgroundPositionX: `${-left*2}px`,
+        backgroundPositionY: `${-top*2}px`,
       },
-    ]" v-show="false"></div>
+    ]" v-show="!isOutside"></div>
   </div>
 </template>
 
