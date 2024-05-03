@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { getDetailApi } from '../../apis/detail';
 import { useRoute } from 'vue-router';
 import HotGoodsLog from './components/HotGoodsLog.vue'
+import imgDetail from '../../composables/imgDetail/imgDetail.vue';
 const route=useRoute()
 const goodsDetailList=ref({})
 const getDetail=async()=>{
@@ -43,7 +44,7 @@ getDetail()
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-
+                <img-detail></img-detail>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
