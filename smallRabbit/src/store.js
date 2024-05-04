@@ -31,5 +31,8 @@ return{
 
 
 }
-
-})
+},
+{
+  persist: true,
+}
+)
