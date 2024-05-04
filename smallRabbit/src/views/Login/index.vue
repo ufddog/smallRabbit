@@ -37,7 +37,6 @@ formRef.value.validate( async (val)=>{//触发验证
 //toDoLogin
 const {account,password}=form.value
  const user =await getUserApi({account,password})
-console.log(user);
  ElMessage({type:'success',message:'登陆成功'})
 router.replace('/')
  }
