@@ -1,5 +1,10 @@
 <script setup>
 import {ref} from 'vue'
+import {getUserApi} from '@/apis/user.js'
+import { ElMessage } from 'element-plus'
+import 'element-plus/theme-chalk/el-message.css'
+import { useRouter } from 'vue-router'
+
 
 //表单对象form
 const form=ref({
@@ -21,13 +26,20 @@ const rules=ref({
             }]                                       
 
 })
+const router=useRouter()
+
+
 //点击登录前进行表单验证
 const formRef=ref(null) //通过ref获取表单实例
 const doLogin=()=>{
-formRef.value.validate((val)=>{//触发验证
+formRef.value.validate( async (val)=>{//触发验证
  if(val){
 //toDoLogin
-
+const {account,password}=form.value
+ const user =await getUserApi({account,password})
+console.log(user);
+ ElMessage({type:'success',message:'登陆成功'})
+router.replace('/')
  }
 
 
@@ -38,6 +50,7 @@ formRef.value.validate((val)=>{//触发验证
 
 
 <template>
+  
   <div>
     <header class="login-header">
       <div class="container m-top-20">
