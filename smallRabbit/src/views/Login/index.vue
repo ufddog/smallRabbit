@@ -1,10 +1,10 @@
 <script setup>
 import {ref} from 'vue'
-import {getUserApi} from '@/apis/user.js'
+import {useUserStore} from '@/store'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 import { useRouter } from 'vue-router'
-
+const userStore=useUserStore()
 
 //表单对象form
 const form=ref({
@@ -36,7 +36,7 @@ formRef.value.validate( async (val)=>{//触发验证
  if(val){
 //toDoLogin
 const {account,password}=form.value
- const user =await getUserApi({account,password})
+ await userStore.getUser({account,password})
  ElMessage({type:'success',message:'登陆成功'})
 router.replace('/')
  }

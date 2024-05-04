@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import { getCategoryApi } from "./apis/layoutAPI";
+import {getUserApi} from '@/apis/user.js'
 
 export const useCategoryStore=defineStore('Category',()=>{
 
@@ -14,29 +15,21 @@ return { categoryList,getCategory}
 
 })
 
+export const useUserStore=defineStore('user',()=>{
 
-export const useCounterStore=defineStore('counter',()=>{
-  
-const counter=ref(0)
+  const userInfo=ref({})
+const getUser=async ({account,password})=>{
+  const res =await getUserApi({account,password})
+  userInfo.value=res.result
+}
 
-function addCounter(){
-   counter.value++
+
+
+
+return{
+  userInfo,getUser
+
 
 }
- const doubleCount=computed(()=>{
-  return counter.value*2 })
-
- const list=ref([])
-
- const getList=async()=>{
- const res= await axios.get(API_URL)
- list.value=res.data.data.channels
-
-  }
-
- 
-
-
-return{counter,addCounter,doubleCount,getList,list}
 
 })
