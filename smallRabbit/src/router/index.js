@@ -30,7 +30,8 @@ routes:[
 //路由切换回到顶部
 scrollBehavior(){
     return {
-        top :0
+        top :0,
+        behavior:'smooth'
     }
 }
 

@@ -22,15 +22,8 @@ const getUser=async ({account,password})=>{
   const res =await getUserApi({account,password})
   userInfo.value=res.result
 }
-
-
-
-
 return{
-  userInfo,getUser
-
-
-}
+  userInfo,getUser}
 },
 {
   persist: true,
